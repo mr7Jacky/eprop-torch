@@ -1,0 +1,12 @@
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> [120, 84] -> 10) 
+
+=== Starting model training with 10 epochs:
+
+	 Epoch 1...
+cuda:0
+[torch.Size([5, 120])]
