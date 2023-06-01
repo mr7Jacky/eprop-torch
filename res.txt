@@ -1,0 +1,11 @@
+--threshold .10 --epochs 1 --lr 1e-5
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+0.6065306597126334 0.006737946999085467
+=== Model ===
+SRNN (2312 -> 120 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...

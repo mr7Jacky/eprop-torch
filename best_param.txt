@@ -1,0 +1,54 @@
+## Rec MLP [in, 120, 84, out] param
+
+ # # General
+    parser.add_argument('--cpu', action='store_true', default=False)
+    parser.add_argument('--dataset', type=str, choices = ['cue_accumulation'], default='cue_accumulation', help='Choice of the dataset')
+    parser.add_argument('--shuffle', type=bool, default=True,)
+    parser.add_argument('--trials', type=int, default=1)
+    parser.add_argument('--epochs', type=int, default=5)
+    parser.add_argument('--optimizer', type=str, default='Adam')
+    parser.add_argument('--loss', type=str, default='CE')
+    parser.add_argument('--lr', type=float, default=1e-3)
+    parser.add_argument('--lr-layer-norm', type=float, nargs='+', default=(0.005,0.005,0.005,0.005,0.01))
+    parser.add_argument('--batch-size', type=int, default=5)
+    parser.add_argument('--test-batch-size', type=int, default=5)
+    parser.add_argument('--train-len', type=int, default=200)
+    parser.add_argument('--test-len', type=int, default=100)
+    parser.add_argument('--visualize', type=bool, default=False)
+    parser.add_argument('--visualize-light', type=bool, default=False)
+    # Network model parameters
+    parser.add_argument('--n-rec', type=int, default=120)
+    parser.add_argument('--model', type=str, default='LIF')
+    parser.add_argument('--threshold', type=float, default=0.5)#1.5
+    parser.add_argument('--tau-mem', type=float, default=2000)#2000e-3
+    parser.add_argument('--tau-out', type=float, default=20)#e-3
+    parser.add_argument('--bias-out', type=float, default=0.0)
+    parser.add_argument('--gamma', type=float, default=0.3)
+    parser.add_argument('--w-init-gain', type=float, nargs='+', default=(0.5,0.1,0.5,0.1,0.5)) 
+    
+## Rec MLP [in, 120, out]
+# General
+    parser.add_argument('--cpu', action='store_true', default=False, help='Disable CUDA training and run training on CPU')
+    parser.add_argument('--dataset', type=str, choices = ['cue_accumulation'], default='cue_accumulation', help='Choice of the dataset')
+    parser.add_argument('--shuffle', type=bool, default=True, help='Enables shuffling sample order in datasets after each epoch')
+    parser.add_argument('--trials', type=int, default=1, help='Nomber of trial experiments to do (i.e. repetitions with different initializations)')
+    parser.add_argument('--epochs', type=int, default=10, help='Number of epochs to train')
+    parser.add_argument('--optimizer', type=str, choices = ['SGD', 'NAG', 'Adam', 'RMSProp'], default='Adam', help='Choice of the optimizer')
+    parser.add_argument('--loss', type=str, choices = ['MSE', 'BCE', 'CE'], default='CE', help='Choice of the loss function (only for performance monitoring purposes, does not influence learning)')
+    parser.add_argument('--lr', type=float, default=1e-5, help='Initial learning rate')
+    parser.add_argument('--lr-layer-norm', type=float, nargs='+', default=(0.05,0.05,0.1), help='Per-layer modulation factor of the learning rate') #(0.05,0.05,1.0)
+    parser.add_argument('--batch-size', type=int, default=5, help='Batch size for training (limited by the available GPU memory)')
+    parser.add_argument('--test-batch-size', type=int, default=5, help='Batch size for testing (limited by the available GPU memory)')
+    parser.add_argument('--train-len', type=int, default=200, help='Number of training set samples')
+    parser.add_argument('--test-len', type=int, default=100, help='Number of test set samples')
+    parser.add_argument('--visualize', type=bool, default=False, help='Enable network visualization')
+    parser.add_argument('--visualize-light', type=bool, default=False, help='Enable light mode in network visualization, plots traces only for a single neuron')
+    # Network model parameters
+    parser.add_argument('--n-rec', type=int, default=120, help='Number of recurrent units')
+    parser.add_argument('--model', type=str, choices = ['LIF'], default='LIF', help='Neuron model in the recurrent layer. Support for the ALIF neuron model has been removed.')
+    parser.add_argument('--threshold', type=float, default=1.5, help='Firing threshold in the recurrent layer')
+    parser.add_argument('--tau-mem', type=float, default=2000, help='Membrane potential leakage time constant in the recurrent layer (in seconds)')
+    parser.add_argument('--tau-out', type=float, default=20, help='Membrane potential leakage time constant in the output layer (in seconds)')
+    parser.add_argument('--bias-out', type=float, default=0.0, help='Bias of the output layer')
+    parser.add_argument('--gamma', type=float, default=0.3, help='Surrogate derivative magnitude parameter')
+    parser.add_argument('--w-init-gain', type=float, nargs='+', default=(0.5,0.1,0.5), help='Gain parameter for the He Normal initialization of the input, recurrent and output layer weights') #(0.5,0.1,0.5)

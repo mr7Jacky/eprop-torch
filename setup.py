@@ -141,7 +141,8 @@ def load_dataset_cue_accumulation(args, kwargs):
                                      ])
     trainset = tonic.datasets.NMNIST(save_to='./data', transform=frame_transform, train=True)
     testset = tonic.datasets.NMNIST(save_to='./data', transform=frame_transform, train=False)
-
+    # trainset = torch.utils.data.Subset(trainset, np.arange(0,5000))
+    # testset = torch.utils.data.Subset(testset, np.arange(0,1000))
     train_loader     = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size,      shuffle=args.shuffle, collate_fn=tonic.collation.PadTensors(), **kwargs)
     traintest_loader = torch.utils.data.DataLoader(trainset, batch_size=args.test_batch_size, shuffle=False       , collate_fn=tonic.collation.PadTensors(), **kwargs)
     test_loader      = torch.utils.data.DataLoader(testset , batch_size=args.test_batch_size, shuffle=False       , collate_fn=tonic.collation.PadTensors(), **kwargs)
@@ -155,7 +156,7 @@ def load_dataset_cue_accumulation(args, kwargs):
     args.classif        = True
     args.full_train_len = len(trainset)
     args.full_test_len  = len(testset)
-    args.delay_targets  = t_interval
+    args.delay_targets  = 0 #t_interval
     args.skip_test      = False
     
     return (train_loader, traintest_loader, test_loader)

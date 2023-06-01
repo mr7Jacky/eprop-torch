@@ -67,10 +67,13 @@ class SRNN(nn.Module):
         #Parameters
         
         self.w = []
+        self.w_rec = []
         for i in range(self.n_layer):
             in_num = self.n_in if i == 0 else self.n_rec[i-1]
             self.w.append(nn.Parameter(torch.Tensor(self.n_rec[i], in_num)).to(self.device))
+            self.w_rec.append(nn.Parameter(torch.Tensor(self.n_rec[i], self.n_rec[i])).to(self.device))
         self.w = nn.ParameterList(self.w)
+        self.w_rec = nn.ParameterList(self.w_rec)
         self.lr_w = [torch.ones((n_out, self.n_rec[i]), device=device, requires_grad=False) for i in range(self.n_layer)]
         self.w_out = nn.Parameter(torch.Tensor(n_out, self.n_rec[-1])).to(self.device)
         # self.reg_term = torch.zeros(self.n_rec[-1]).to(self.device)
@@ -82,13 +85,15 @@ class SRNN(nn.Module):
             plt.ion()
             self.fig, self.ax_list = plt.subplots(2+self.n_out+5, sharex=True)
         self.count = 0
-        self.wm  = [0] * (self.n_layer+1)
+        self.wm  = [0] * (self.n_layer*2+1)
     def reset_parameters(self, gain):
         cnt = 0
         for i in range(self.n_layer):
             torch.nn.init.kaiming_normal_(self.w[i])
             self.w[i].data = gain[cnt]*self.w[i].data
-            cnt += 1
+            torch.nn.init.kaiming_normal_(self.w_rec[i])
+            self.w_rec[i].data = gain[cnt+1]*self.w_rec[i].data
+            cnt += 2
         torch.nn.init.kaiming_normal_(self.w_out)
         self.w_out.data = gain[-1]*self.w_out.data
         
@@ -106,6 +111,7 @@ class SRNN(nn.Module):
         #Weight gradients
         for i in range(self.n_layer):
             self.w[i].grad = torch.zeros_like(self.w[i])
+            self.w_rec[i].grad  = torch.zeros_like(self.w_rec[i])
         self.w_out.grad = torch.zeros_like(self.w_out)
     
     def forward(self, x, yt, do_training):
@@ -113,7 +119,10 @@ class SRNN(nn.Module):
         self.n_b = x.shape[1]    # Extracting batch size
         self.n_t = x.shape[0]
         self.init_net(self.n_b, self.n_t, self.n_in, self.n_rec, self.n_out)    # Network reset
-    
+        
+        for i in range(self.n_layer):
+            self.w_rec[i] *= (1 - torch.eye(self.n_rec[i], self.n_rec[i], device=self.device))         # Making sure recurrent self excitation/inhibition is cancelled
+        
         for t in range(self.n_t-1):     # Computing the network state and outputs for the whole sample duration
         
             # Forward pass - Hidden state:  v: recurrent layer membrane potential
@@ -121,7 +130,7 @@ class SRNN(nn.Module):
             
             for i in range(self.n_layer):
                 inp = x[t] if i == 0 else self.z[i-1][t+1]
-                self.v[i][t+1]  = (self.alpha * self.v[i][t] + torch.mm(inp, self.w[i].t())) - self.z[i][t]*self.thr
+                self.v[i][t+1]  = (self.alpha * self.v[i][t] + torch.mm(self.z[i][t], self.w_rec[i].t()) + torch.mm(inp, self.w[i].t())) - self.z[i][t]*self.thr
                 self.z[i][t+1]  = (self.v[i][t+1] > self.thr).float()
             self.vo[t+1] = self.kappa * self.vo[t] + torch.mm(self.z[-1][t+1], self.w_out.t()) + self.b_o
         
@@ -152,7 +161,7 @@ class SRNN(nn.Module):
             # Surrogate derivatives
             h = self.gamma*torch.max(torch.zeros_like(self.v[i]), 1-torch.abs((self.v[i]-self.thr)/self.thr))
             # Learning signals
-            # self.lr_w[-1] = self.w_out
+            self.lr_w[-1] = self.w_out
             L = torch.einsum('tbo,or->brt', err, self.lr_w[i])
             inp = x if i == 0 else self.z[i-1]
             
@@ -162,8 +171,16 @@ class SRNN(nn.Module):
             trace_in     = F.conv1d(   trace_in.reshape(self.n_b,inp.shape[-1]*self.n_rec[i],self.n_t), kappa_conv.expand(inp.shape[-1]*self.n_rec[i],-1,-1), padding=self.n_t, groups=inp.shape[-1]*self.n_rec[i])[:,:,1:self.n_t+1].reshape(self.n_b,self.n_rec[i],inp.shape[-1] ,self.n_t)   #n_b, n_rec, n_in , n_t  
             # Weight gradient updates
             self.w[i].grad  += self.lr_layer[cnt]*torch.sum(L.unsqueeze(2).expand(-1,-1,inp.shape[-1] ,-1) * trace_in , dim=(0,3)) 
-            del trace_in, h, L, inp
-            cnt += 1
+            del trace_in
+
+            trace_rec   = F.conv1d(self.z[i].permute(1,2,0), alpha_conv.expand(self.n_rec[i],-1,-1), padding=self.n_t, groups=self.n_rec[i])[:,:, :self.n_t  ].unsqueeze(1).expand(-1,self.n_rec[i],-1,-1)  #n_b, n_rec, n_rec, n_t
+            trace_rec   = torch.einsum('tbr,brit->brit', h, trace_rec)                                                                                                                          #n_b, n_rec, n_rec, n_t    
+            # Eligibility traces
+            trace_rec    = F.conv1d(  trace_rec.reshape(self.n_b,self.n_rec[i]*self.n_rec[i],self.n_t), kappa_conv.expand(self.n_rec[i]*self.n_rec[i],-1,-1), padding=self.n_t, groups=self.n_rec[i]*self.n_rec[i])[:,:,1:self.n_t+1].reshape(self.n_b,self.n_rec[i],self.n_rec[i],self.n_t)   #n_b, n_rec, n_rec, n_t
+            # Weight gradient updates
+            self.w_rec[i].grad += self.lr_layer[cnt+1]*torch.sum(L.unsqueeze(2).expand(-1,-1,self.n_rec[i],-1) * trace_rec, dim=(0,3))
+            del trace_rec, h, L, inp
+            cnt += 2
         del alpha_conv
         
         # Output eligibility vector (vectorized computation, model-dependent)
@@ -176,12 +193,13 @@ class SRNN(nn.Module):
         cnt = 0
         for i in range(self.n_layer):
             self.wm[cnt] = max(self.wm[i], self.w[i].grad.max())
-            cnt += 1
+            self.wm[cnt+1] = max(self.wm[i+1], self.w_rec[i].grad.max())
+            cnt += 2
         self.wm[-1] = max(self.wm[-1], self.w_out.grad.max())
         if self.count % 50 == 0:
             print(f'Fire Rate:{self.z[-1].sum()/torch.ones_like(self.z[-1]).sum()}')
             print(self.wm)
-            self.wm  = [0] *(self.n_layer+1)
+            self.wm  = [0] *(self.n_layer*2+1)
         
         
     def __repr__(self):

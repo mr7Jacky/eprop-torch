@@ -36,13 +36,19 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-# import models
-import mlps as models
+import models
+# import mlps as models
 from tqdm import tqdm
+import numpy as np
+import random
+
 
 
 def train(args, device, train_loader, traintest_loader, test_loader):
-    torch.manual_seed(42)
+    seed = 1024
+    torch.manual_seed(seed)
+    random.seed(seed)
+    np.random.seed(seed)
     
     for trial in range(1,args.trials+1):
         

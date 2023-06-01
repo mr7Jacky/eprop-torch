@@ -1,0 +1,362 @@
+Threshold .10 Epoch 1 Lr 1e-6
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5388/60000 (8.98%), loss: 17481.201171875
+		 Score on test set                     : 892/10000 (8.92%), loss: 2929.197265625
+Threshold .10 Epoch 1 Lr 1e-7
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5125/60000 (8.541666666666666%), loss: 17292.896484375
+		 Score on test set                     : 836/10000 (8.36%), loss: 2881.43212890625
+Threshold .10 Epoch 1 Lr 1e-8
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5208/60000 (8.68%), loss: 17297.455078125
+		 Score on test set                     : 865/10000 (8.649999999999999%), loss: 2882.871826171875
+Threshold .10 Epoch 1 Lr 1e-9
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5224/60000 (8.706666666666667%), loss: 17298.0
+		 Score on test set                     : 852/10000 (8.52%), loss: 2883.0546875
+Threshold .10 Epoch 1 Lr 1e-10
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5222/60000 (8.703333333333333%), loss: 17298.052734375
+		 Score on test set                     : 843/10000 (8.43%), loss: 2883.0771484375
+Threshold .60 Epoch 1 Lr 1e-6
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5387/60000 (8.978333333333333%), loss: 17273.275390625
+		 Score on test set                     : 989/10000 (9.89%), loss: 2881.033935546875
+Threshold .60 Epoch 1 Lr 1e-7
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5593/60000 (9.321666666666667%), loss: 17270.173828125
+		 Score on test set                     : 945/10000 (9.45%), loss: 2878.214599609375
+Threshold .60 Epoch 1 Lr 1e-8
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5744/60000 (9.573333333333334%), loss: 17270.173828125
+		 Score on test set                     : 982/10000 (9.82%), loss: 2878.214599609375
+Threshold .60 Epoch 1 Lr 1e-9
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5743/60000 (9.571666666666667%), loss: 17270.173828125
+		 Score on test set                     : 979/10000 (9.790000000000001%), loss: 2878.214599609375
+Threshold .60 Epoch 1 Lr 1e-10
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5741/60000 (9.568333333333333%), loss: 17270.173828125
+		 Score on test set                     : 978/10000 (9.78%), loss: 2878.214599609375
+Threshold 1.10 Epoch 1 Lr 1e-6
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5018/60000 (8.363333333333333%), loss: 17270.173828125
+		 Score on test set                     : 783/10000 (7.829999999999999%), loss: 2878.326171875
+Threshold 1.10 Epoch 1 Lr 1e-7
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 1.10 Epoch 1 Lr 1e-8
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 1.10 Epoch 1 Lr 1e-9
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 1.10 Epoch 1 Lr 1e-10
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 1.60 Epoch 1 Lr 1e-6
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5901/60000 (9.835%), loss: 17270.173828125
+		 Score on test set                     : 950/10000 (9.5%), loss: 2878.214599609375
+Threshold 1.60 Epoch 1 Lr 1e-7
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 1.60 Epoch 1 Lr 1e-8
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 1.60 Epoch 1 Lr 1e-9
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 1.60 Epoch 1 Lr 1e-10
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.10 Epoch 1 Lr 1e-6
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.10 Epoch 1 Lr 1e-7
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.10 Epoch 1 Lr 1e-8
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.10 Epoch 1 Lr 1e-9
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.10 Epoch 1 Lr 1e-10
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.60 Epoch 1 Lr 1e-6
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.60 Epoch 1 Lr 1e-7
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
+		 Score on training set (while training): 5923/60000 (9.871666666666666%), loss: 17270.173828125
+		 Score on test set                     : 980/10000 (9.8%), loss: 2878.214599609375
+Threshold 2.60 Epoch 1 Lr 1e-8
+=== The available CUDA GPU will be used for computations.
+=== Loading cue evidence accumulation dataset...
+Training set length: 60000
+Test set length: 10000
+=== Model ===
+SRNN (2312 -> 100 -> 10) 
+
+=== Starting model training with 1 epochs:
+
+	 Epoch 1...
